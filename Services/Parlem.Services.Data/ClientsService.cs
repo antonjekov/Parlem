@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Parlem.Services.Data
 {
-    internal class ClientsService : IClientsService
+    public class ClientsService : IClientsService
     {
         private IDeletableEntityRepository<Client> repository;
 
