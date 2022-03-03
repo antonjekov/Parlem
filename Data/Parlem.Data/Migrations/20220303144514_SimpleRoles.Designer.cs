@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Parlem.Data;
 
 namespace Parlem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220303144514_SimpleRoles")]
+    partial class SimpleRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -605,7 +607,7 @@ namespace Parlem.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("Parlem.Data.Models.SimpleRole", "SimpleRole")
-                        .WithMany("Clients")
+                        .WithMany()
                         .HasForeignKey("SimpleRoleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -620,7 +622,7 @@ namespace Parlem.Data.Migrations
             modelBuilder.Entity("Parlem.Data.Models.Customer", b =>
                 {
                     b.HasOne("Parlem.Data.Models.SimpleRole", "SimpleRole")
-                        .WithMany("Customers")
+                        .WithMany()
                         .HasForeignKey("SimpleRoleId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -683,13 +685,6 @@ namespace Parlem.Data.Migrations
             modelBuilder.Entity("Parlem.Data.Models.Customer", b =>
                 {
                     b.Navigation("ProductsSelled");
-                });
-
-            modelBuilder.Entity("Parlem.Data.Models.SimpleRole", b =>
-                {
-                    b.Navigation("Clients");
-
-                    b.Navigation("Customers");
                 });
 #pragma warning restore 612, 618
         }

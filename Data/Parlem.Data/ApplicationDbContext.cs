@@ -26,6 +26,20 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Client> Clients { get; set; }
+
+        public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<DocType> DocTypes { get; set; }
+
+        public DbSet<Document> Documents { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductSelled> ProductsSelled { get; set; }
+
+        public DbSet<SimpleRole> SimpleRoles { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
