@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Parlem.Data;
 
 namespace Parlem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220303135726_ModelsCreated")]
+    partial class ModelsCreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -280,9 +282,6 @@ namespace Parlem.Data.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SimpleRoleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
@@ -290,8 +289,6 @@ namespace Parlem.Data.Migrations
                     b.HasIndex("DocumentId");
 
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("SimpleRoleId");
 
                     b.ToTable("Clients");
                 });
@@ -324,14 +321,9 @@ namespace Parlem.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("SimpleRoleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("SimpleRoleId");
 
                     b.ToTable("Customers");
                 });
@@ -510,35 +502,6 @@ namespace Parlem.Data.Migrations
                     b.ToTable("Settings");
                 });
 
-            modelBuilder.Entity("Parlem.Data.Models.SimpleRole", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("SimpleRoles");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Parlem.Data.Models.ApplicationRole", null)
@@ -604,28 +567,9 @@ namespace Parlem.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Parlem.Data.Models.SimpleRole", "SimpleRole")
-                        .WithMany("Clients")
-                        .HasForeignKey("SimpleRoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Customer");
 
                     b.Navigation("Document");
-
-                    b.Navigation("SimpleRole");
-                });
-
-            modelBuilder.Entity("Parlem.Data.Models.Customer", b =>
-                {
-                    b.HasOne("Parlem.Data.Models.SimpleRole", "SimpleRole")
-                        .WithMany("Customers")
-                        .HasForeignKey("SimpleRoleId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("SimpleRole");
                 });
 
             modelBuilder.Entity("Parlem.Data.Models.Document", b =>
@@ -683,13 +627,6 @@ namespace Parlem.Data.Migrations
             modelBuilder.Entity("Parlem.Data.Models.Customer", b =>
                 {
                     b.Navigation("ProductsSelled");
-                });
-
-            modelBuilder.Entity("Parlem.Data.Models.SimpleRole", b =>
-                {
-                    b.Navigation("Clients");
-
-                    b.Navigation("Customers");
                 });
 #pragma warning restore 612, 618
         }
