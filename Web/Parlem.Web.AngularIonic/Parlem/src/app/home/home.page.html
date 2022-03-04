@@ -26,9 +26,9 @@
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
             <ion-label position="floating">Document Number</ion-label>
-            <ion-input ngModel name="docNum" type="text" required formControlName='docNum'></ion-input>
+            <ion-input name="docNum" type="text" required formControlName='docNum'></ion-input>
           </ion-item>
-          <ion-button type="submit" [disabled]="!form.valid">Get client data</ion-button>
+          <ion-button type="submit" [disabled]="!form.valid">Get client info</ion-button>
         </ion-col>
       </ion-row>
     </form>
@@ -38,9 +38,14 @@
         <h1>Client data</h1>
         <ion-card>
           <ion-card-content>
-            <div>{{client._id}}</div>
-            <div>{{client.docType}}</div>
-            <div>{{client.docNum}}</div>
+            <div>_id: {{client._id}}</div>
+            <div>docType: {{client.docType}}</div>
+            <div>docNum: {{client.docNum}}</div>
+            <div>email: {{client.email}}</div>
+            <div>customerId: {{client.customerId}}</div>
+            <div>givenName: {{client.givenName}}</div>
+            <div>familyName1: {{client.familyName1}}</div>
+            <div>phone: {{client.phone}}</div>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -51,9 +56,12 @@
         <div *ngFor="let product of products">
           <ion-card>
             <ion-card-content>
-              <div>{{product._id}}</div>
-              <div>{{product.productName}}</div>
-              <div>{{product.productTypeName}}</div>
+              <div>_id: {{product._id}}</div>
+              <div>productName: {{product.productName}}</div>
+              <div>productTypeName: {{product.productTypeName}}</div>
+              <div>numeracioTerminal: {{product.numeracioTerminal}}</div>
+              <div>soldAt: {{product.soldAt}}</div>
+              <div>customerId: {{product.customerId}}</div>
             </ion-card-content>
           </ion-card>
         </div>
