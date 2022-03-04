@@ -1,9 +1,8 @@
 ﻿namespace Parlem.Web.Areas.Administration.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     using Parlem.Services.Data;
     using Parlem.Web.ViewModels.Administration.Dashboard;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController
     {

@@ -1,14 +1,12 @@
-﻿using Parlem.Data.Common.Repositories;
-using Parlem.Data.Models;
-using Parlem.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Parlem.Services.Data
+﻿namespace Parlem.Services.Data
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Parlem.Data.Common.Repositories;
+    using Parlem.Data.Models;
+    using Parlem.Services.Mapping;
+
     public class ClientsService : IClientsService
     {
         private IDeletableEntityRepository<Client> repository;

@@ -1,12 +1,11 @@
-﻿using Parlem.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Parlem.Data.Seeding
+﻿namespace Parlem.Data.Seeding
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Parlem.Data.Models;
+
     internal class ProductsSelledSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)

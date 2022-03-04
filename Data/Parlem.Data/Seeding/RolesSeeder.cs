@@ -4,11 +4,10 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Parlem.Common;
-    using Parlem.Data.Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
+    using Parlem.Common;
+    using Parlem.Data.Models;
 
     internal class RolesSeeder : ISeeder
     {

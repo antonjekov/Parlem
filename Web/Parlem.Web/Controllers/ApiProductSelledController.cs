@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Parlem.Services.Data;
-using Parlem.Web.ViewModels;
-using Parlem.Web.ViewModels.ProductSelled;
-using System.Linq;
-
-namespace Parlem.Web.Controllers
+﻿namespace Parlem.Web.Controllers
 {
+    using System.Linq;
+
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Parlem.Services.Data;
+    using Parlem.Web.ViewModels;
+    using Parlem.Web.ViewModels.ProductSelled;
+
     [Route("api/products")]
     [ApiController]
     public class ApiProductSelledController : ControllerBase

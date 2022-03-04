@@ -2,9 +2,8 @@
 {
     using System.Linq;
 
-    using Parlem.Data.Common.Models;
-
     using Microsoft.EntityFrameworkCore;
+    using Parlem.Data.Common.Models;
 
     internal static class EntityIndexesConfiguration
     {
