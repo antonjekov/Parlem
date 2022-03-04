@@ -100,6 +100,8 @@
 
             app.UseRouting();
 
+            app.UseCors(policy => policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:8100"));
+
             app.UseAuthentication();
             app.UseAuthorization();
 

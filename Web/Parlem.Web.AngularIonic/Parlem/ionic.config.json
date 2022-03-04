@@ -1,0 +1,7 @@
+{
+  "name": "Parlem",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
