@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Client } from './client';
-import { Product } from './product';
+import { Client } from '../_interfaces/client';
+import { Product } from '../_interfaces/product';
+import { ClientService } from '../_services/client.service';
+import { ProductService } from '../_services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +20,10 @@ export class HomePage implements OnInit, OnDestroy{
   prodSub: Subscription;
   clientSub: Subscription;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private clientService: ClientService,
+    private productsService: ProductService) {}
 
 
   ngOnInit(): void {
@@ -40,12 +45,8 @@ export class HomePage implements OnInit, OnDestroy{
       return;
     }
 
-    this.prodSub = this.http
-    .get(`https://localhost:44319/api/products?docNum=${this.form.value.docNum}`)
-    .subscribe(x=>this.products=x as Product[]);
-
-    this.clientSub = this.http
-    .get(`https://localhost:44319/api/clients?docNum=${this.form.value.docNum}`)
-    .subscribe(x=>this.client=x as Client);
+    const docNum = this.form.value.docNum;
+    this.prodSub = this.productsService.getProductsByDocNum(docNum).subscribe(x=>this.products=x);
+    this.clientSub = this.clientService.getClientByDocNum(docNum).subscribe(x=>this.client=x);
   }
 }
