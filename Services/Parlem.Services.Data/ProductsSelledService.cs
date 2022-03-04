@@ -1,11 +1,11 @@
 ﻿namespace Parlem.Services.Data
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     using Parlem.Data.Common.Repositories;
     using Parlem.Data.Models;
     using Parlem.Services.Mapping;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class ProductsSelledService : IProductsSelledService
     {

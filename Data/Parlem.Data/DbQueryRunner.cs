@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using Parlem.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using Parlem.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

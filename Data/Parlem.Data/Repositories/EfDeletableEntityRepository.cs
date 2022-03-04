@@ -3,10 +3,9 @@
     using System;
     using System.Linq;
 
+    using Microsoft.EntityFrameworkCore;
     using Parlem.Data.Common.Models;
     using Parlem.Data.Common.Repositories;
-
-    using Microsoft.EntityFrameworkCore;
 
     public class EfDeletableEntityRepository<TEntity> : EfRepository<TEntity>, IDeletableEntityRepository<TEntity>
         where TEntity : class, IDeletableEntity

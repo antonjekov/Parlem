@@ -1,8 +1,8 @@
 ﻿namespace Parlem.Data.Configurations
 {
-    using Parlem.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Parlem.Data.Models;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

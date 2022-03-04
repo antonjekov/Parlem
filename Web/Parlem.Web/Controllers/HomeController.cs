@@ -2,9 +2,8 @@
 {
     using System.Diagnostics;
 
-    using Parlem.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
+    using Parlem.Web.ViewModels;
 
     public class HomeController : BaseController
     {

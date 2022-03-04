@@ -1,9 +1,8 @@
 ﻿namespace Parlem.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using Parlem.Data.Models;
     using Parlem.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

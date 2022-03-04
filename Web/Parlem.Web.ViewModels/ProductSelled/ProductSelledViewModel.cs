@@ -3,7 +3,6 @@
     using AutoMapper;
     using Parlem.Data.Models;
     using Parlem.Services.Mapping;
-    using System;
 
     public class ProductSelledViewModel : IMapFrom<ProductSelled>, IHaveCustomMappings
     {

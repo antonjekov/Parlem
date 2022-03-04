@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Parlem.Services.Data;
-using Parlem.Web.ViewModels.ProductSelled;
-using Parlem.Web.ViewModels.Shared;
-
-namespace Parlem.Web.Controllers
+﻿namespace Parlem.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using Parlem.Services.Data;
+    using Parlem.Web.ViewModels.ProductSelled;
+    using Parlem.Web.ViewModels.Shared;
+
     public class ProductsSelledController : BaseController
     {
         private IProductsSelledService productsSelledService;
