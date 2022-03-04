@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Parlem.Services.Data;
-using Parlem.Web.ViewModels.Clients;
-using System.Threading.Tasks;
-using Parlem.Web.ViewModels.Clients;
-using System.Collections.Generic;
-
-namespace Parlem.Web.Controllers
+﻿namespace Parlem.Web.Controllers
 {
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+    using Parlem.Services.Data;
+    using Parlem.Web.ViewModels;
+    using Parlem.Web.ViewModels.Clients;
+
     [Route("api/clients")]
     [ApiController]
     public class ApiClientsController : ControllerBase
@@ -18,12 +17,17 @@ namespace Parlem.Web.Controllers
             this.clientsService = clientsService;
         }
 
-        // Route api/clients?docNum = ????
+        // Route https://localhost:44319/api/clients?docNum=11223344E
         [HttpGet]
-        public ClientViewModel Get(string docNum)
+        public IActionResult Get(string docNum)
         {
             var client = this.clientsService.GetByDocNum<ClientViewModel>(docNum);
-            return client;
+            if (client == null)
+            {
+                return this.StatusCode(StatusCodes.Status204NoContent, new Response { Status = "Error", Message = "User with this document doesn't exist." });
+            }
+
+            return this.Ok(client);
         }
     }
 }

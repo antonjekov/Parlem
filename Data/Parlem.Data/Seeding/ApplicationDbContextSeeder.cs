@@ -32,6 +32,7 @@
                               new ProductsSeeder(),
                               new CustomersSeeder(),
                               new ClientsSeeder(),
+                              new ProductsSelledSeeder(),
                           };
 
             foreach (var seeder in seeders)
