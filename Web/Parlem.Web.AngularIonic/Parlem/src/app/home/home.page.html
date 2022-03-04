@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Parlem
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Parlem</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" offset="3">
+        <div class="ion-text-center">
+          <h1>Welcome to Parlem!</h1>
+        </div>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="form" (ngSubmit)="onDocNum()">
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Document Number</ion-label>
+            <ion-input ngModel name="docNum" type="text" required formControlName='docNum'></ion-input>
+          </ion-item>
+          <ion-button type="submit" [disabled]="!form.valid">Get client data</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+    <ion-row *ngIf="client">
+      <ion-col size-sm="6" offset-sm="3">
+        <h1>Client data</h1>
+        <ion-card>
+          <ion-card-content>
+            <div>{{client._id}}</div>
+            <div>{{client.docType}}</div>
+            <div>{{client.docNum}}</div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="products">
+      <ion-col size-sm="6" offset-sm="3">
+        <h1>Products</h1>
+        <div *ngFor="let product of products">
+          <ion-card>
+            <ion-card-content>
+              <div>{{product._id}}</div>
+              <div>{{product.productName}}</div>
+              <div>{{product.productTypeName}}</div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
