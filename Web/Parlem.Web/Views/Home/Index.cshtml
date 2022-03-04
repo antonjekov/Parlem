@@ -1,9 +1,33 @@
 ﻿@using Parlem.Common
+@model Parlem.Web.ViewModels.Shared.DocNumInputModel
 @{
     this.ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <form asp-action="Details" asp-controller="Clients" method="post">
+                    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                    <div class="form-group">
+                        <label asp-for="DocNum">Client document number</label>
+                        <input asp-for="DocNum" class="form-control" />
+                        <span asp-validation-for="DocNum" class="text-danger"></span>
+                    </div> 
+                    <button type="submit" class="btn btn-primary">Get client by document number</button>
+                </form>
+                <form asp-action="AllForClient" asp-controller="ProductsSelled" method="post">
+                    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                    <div class="form-group">
+                        <label asp-for="DocNum">Client document number</label>
+                        <input asp-for="DocNum" class="form-control" />
+                        <span asp-validation-for="DocNum" class="text-danger"></span>
+                    </div> 
+                    <button type="submit" class="btn btn-primary">Get products by document number</button>
+                </form>
+            </div>
+        </div>
+    </div>    
 </div>

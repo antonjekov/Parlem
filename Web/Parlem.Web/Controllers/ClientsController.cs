@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Parlem.Services.Data;
 using Parlem.Web.ViewModels.Clients;
+using Parlem.Web.ViewModels.Shared;
 
 namespace Parlem.Web.Controllers
 {
@@ -13,9 +14,15 @@ namespace Parlem.Web.Controllers
             this.clientsService = clientsService;
         }
 
-        public IActionResult Details(string id)
+        [HttpPost]
+        public IActionResult Details(DocNumInputModel input)
         {
-            var client = this.clientsService.GetByDocNum<ClientViewModel>(id);
+            if (!this.ModelState.IsValid)
+            {
+                this.RedirectToRoute(new { area = string.Empty, controller = "Home", action = "Index" });
+            }
+
+            var client = this.clientsService.GetByDocNum<ClientViewModel>(input.DocNum);
 
             return this.View(client);
         }
@@ -23,14 +30,6 @@ namespace Parlem.Web.Controllers
         public IActionResult Index()
         {
             return this.View();
-        }
-
-        [Route("api/clients/id")]
-        public IActionResult DetailsApi(string id)
-        {
-            var client = this.clientsService.GetByDocNum<ClientViewModel>(id);
-
-            return this.Json(client);
         }
     }
 }
